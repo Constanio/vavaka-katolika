@@ -1,4 +1,4 @@
-name: Deploy Web App
+name: Build APK
 
 on:
   push:
@@ -19,11 +19,11 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build Web
-        run: flutter build web --release
+      - name: Build APK
+        run: flutter build apk --release
 
-      - name: Upload Web artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: vavaka-web
-          path: build/web
+          name: vavaka-release
+          path: build/app/outputs/flutter-apk/app-release.apk
