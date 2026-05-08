@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     await PriereService.loadPrieres();
     setState(() {
       _prieres = PriereService.getPrieres();
+      _prieres.sort((a, b) => a.titre.compareTo(b.titre));
       _isLoading = false;
     });
   }
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ).toList();
     }
     
-    return result;
+    return result..sort((a, b) => a.titre.compareTo(b.titre));
   }
 
   List<String> get _categories {
